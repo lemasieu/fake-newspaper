@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Báo Lá Cải</title>
+    <!-- Nhúng font chữ cho kiểu báo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;1,400&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Khu vực nhập liệu -->
+        <aside class="input-panel">
+            <h2>✍️ Tạo Báo Của Bạn</h2>
+            <div class="form-group">
+                <label for="newspaper-name">Tên tờ báo</label>
+                <input type="text" id="newspaper-name" placeholder="VD: Báo Lá Cải Hư Cấu" value="Báo Lá Cải Hư Cấu"
+                    list="safe-newspaper-names" autocomplete="off">
+                <!-- Gợi ý tên hư cấu, tránh trùng báo thật -->
+                <datalist id="safe-newspaper-names">
+                    <option value="Báo Lá Cải Hư Cấu"></option>
+                    <option value="Tin Vịt Hằng Ngày"></option>
+                    <option value="Nhật Báo Xàm Xí"></option>
+                    <option value="Thời Báo Hầm Cầu"></option>
+                    <option value="Báo Đồn Đại 24/7"></option>
+                    <option value="Tin Sốt Dẻo Không Thật"></option>
+                    <option value="Báo Giật Tít Hư Cấu"></option>
+                    <option value="Cái Loa Phường Hư Cấu"></option>
+                </datalist>
+                <small class="hint hint-warn">
+                    ⚠️ Chỉ dùng cho mục đích châm biếm/hư cấu. Vui lòng không dùng tên báo thật đang hoạt động.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="article-date">Ngày tháng</label>
+                <input type="text" id="article-date" placeholder="VD: Thứ Sáu, 25/09/2026" value="Thứ Sáu, 25/09/2026">
+            </div>
+            <div class="form-group">
+                <label for="headline">Tiêu đề chính</label>
+                <input type="text" id="headline" placeholder="Nhập tiêu đề giật gân..."
+                    value="PHÁT HIỆN SỰ THẬT GÂY SỐC VỀ...">
+            </div>
+
+            <!-- ===== Ô UPLOAD ẢNH MỚI ===== -->
+            <div class="form-group">
+                <label for="image-upload">🖼️ Ảnh minh họa (không bắt buộc)</label>
+                <input type="file" id="image-upload" accept="image/*">
+                <div class="image-preview-wrapper" id="image-preview-wrapper">
+                    <img id="image-preview" alt="Xem trước ảnh" />
+                    <button type="button" id="remove-image-btn" title="Xóa ảnh">✕</button>
+                </div>
+                <small class="hint">Ảnh chỉ xử lý trên trình duyệt, không tải lên server.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="article-content">Nội dung bài báo</label>
+                <textarea id="article-content" rows="8"
+                    placeholder="Nhập nội dung...">Trong một diễn biến mới nhất, các nhà điều tra đã phát hiện ra một sự thật động trời. Các nhân chứng cho biết họ không thể tin vào mắt mình khi chứng kiến sự việc. Hiện cơ quan có liên quan đang tiến hành điều tra làm rõ.</textarea>
+            </div>
+            <button id="generate-btn" class="btn-primary">📰 Tạo Báo</button>
+            <button id="download-btn" class="btn-secondary" disabled>⬇️ Tải Ảnh Về</button>
+        </aside>
+
+        <!-- Khu vực xem trước -->
+        <main class="preview-panel">
+            <h2>📸 Xem Trước</h2>
+            <div id="newspaper-preview" class="newspaper">
+                <!-- Nội dung báo sẽ được tạo ở đây bằng JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
